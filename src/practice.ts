@@ -1,15 +1,24 @@
-let count: number = 0;
-count += 1;
+function sum(x: number, y: number): number {
+  return x + y;
+}
 
-const message: string = "hello world";
-const done: boolean = false;
+const result = sum(1, 2);
 
-const numbers: number[] = [1, 2, 3];
+function sumArray(numbers: number[]): number {
+  return numbers.reduce((acc, cur) => acc + cur, 0);
+}
 
-const messages: string[] = ["hello", "world"];
+const total = sumArray([1, 2, 3, 4, 5]);
+console.log(total);
 
-let mightBeUndefined: string | undefined = undefined; // 'dfasdf'
-let nullableNumber: number | null = null; // 10
+function returnNothing(): void {
+  console.log("어쩌고 저쩌고");
+}
 
-let color: "red" | "orange" | "yellow" = "red";
-color = "yellow";
+returnNothing();
+
+function returnStringNumber(): string | number {
+  return 4;
+}
+
+returnStringNumber();
