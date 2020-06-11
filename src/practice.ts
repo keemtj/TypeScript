@@ -1,27 +1,33 @@
-// interface Person {
-type Person = {
-  name: string;
-  age?: number;
+// Generics
+// parameter type을 any로 넣어준 것처럼 어떤 값이든 넣어줄 수 있는데
+// any를 사용하게 되면 type이 any로 보여지지만
+// 제너릭스를 사용하면 param에 따라 string, number등 보여준다
+// 즉 어떤값이든 넣고 싶고, any는 싫고, type을 보여주고 싶을때 제너릭스
+function merge<T1, T2>(a: T1, b: T2) {
+  return {
+    ...a,
+    ...b,
+  };
+}
+
+const merged = merge({ foo: 1 }, { bar: 2, foobar: 3 });
+
+function wrap<T>(param: T) {
+  return {
+    param,
+  };
+}
+
+const wrappded = wrap("10");
+wrappded.param;
+
+// interface Items<T> {
+type Items<T, V> = {
+  list: T[];
+  value: V;
 };
 
-type Developer = Person & {
-  // interface Developer extends Person {
-  // name: string;
-  // age?: number;
-  skills: string[];
+const items: Items<string, number> = {
+  list: ["a", "b", "c"],
+  value: 1,
 };
-const person: Person = {
-  name: "김사람",
-  age: 20,
-};
-
-const expert: Developer = {
-  name: "김개발",
-  skills: ["javascript", "react", "typescript"],
-};
-
-type People = Person[];
-const people: People = [person, expert];
-
-type Color = "red" | "orange" | "yellow";
-const color: Color = "orange";
