@@ -1,0 +1,12 @@
+{
+  "name": "TypeScript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/keemtj/TypeScript.git",
+  "author": "keemtj <keemgreat@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  }
+}
