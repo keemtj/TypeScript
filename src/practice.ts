@@ -1,24 +1,45 @@
-function sum(x: number, y: number): number {
-  return x + y;
+interface Shape {
+  getArea(): number;
 }
 
-const result = sum(1, 2);
+class Circle implements Shape {
+  // radius: number;
 
-function sumArray(numbers: number[]): number {
-  return numbers.reduce((acc, cur) => acc + cur, 0);
+  // constructor(radius: number) {
+  //   this.radius = radius;
+  // }
+
+  constructor(public radius: number) {}
+
+  getArea() {
+    return this.radius * this.radius * Math.PI;
+  }
 }
 
-const total = sumArray([1, 2, 3, 4, 5]);
-console.log(total);
+class Rectangle implements Shape {
+  // width: number;
+  // height: number;
+  // constructor(width: number, height: number) {
+  //   this.width = width;
+  //   this.height = height;
+  // }
 
-function returnNothing(): void {
-  console.log("어쩌고 저쩌고");
+  constructor(private width: number, private height: number) {}
+
+  getArea() {
+    return this.width * this.height;
+  }
 }
 
-returnNothing();
+const circle: Circle = new Circle(5);
+const rectangle: Rectangle = new Rectangle(2, 5);
 
-function returnStringNumber(): string | number {
-  return 4;
+function getCircleArea(circle: Circle) {
+  return circle.getArea();
 }
 
-returnStringNumber();
+const shapes: Shape[] = [circle, rectangle];
+
+shapes.forEach((shape) => {
+  console.log(shape.getArea());
+});
