@@ -1,45 +1,27 @@
-interface Shape {
-  getArea(): number;
-}
+// interface Person {
+type Person = {
+  name: string;
+  age?: number;
+};
 
-class Circle implements Shape {
-  // radius: number;
+type Developer = Person & {
+  // interface Developer extends Person {
+  // name: string;
+  // age?: number;
+  skills: string[];
+};
+const person: Person = {
+  name: "김사람",
+  age: 20,
+};
 
-  // constructor(radius: number) {
-  //   this.radius = radius;
-  // }
+const expert: Developer = {
+  name: "김개발",
+  skills: ["javascript", "react", "typescript"],
+};
 
-  constructor(public radius: number) {}
+type People = Person[];
+const people: People = [person, expert];
 
-  getArea() {
-    return this.radius * this.radius * Math.PI;
-  }
-}
-
-class Rectangle implements Shape {
-  // width: number;
-  // height: number;
-  // constructor(width: number, height: number) {
-  //   this.width = width;
-  //   this.height = height;
-  // }
-
-  constructor(private width: number, private height: number) {}
-
-  getArea() {
-    return this.width * this.height;
-  }
-}
-
-const circle: Circle = new Circle(5);
-const rectangle: Rectangle = new Rectangle(2, 5);
-
-function getCircleArea(circle: Circle) {
-  return circle.getArea();
-}
-
-const shapes: Shape[] = [circle, rectangle];
-
-shapes.forEach((shape) => {
-  console.log(shape.getArea());
-});
+type Color = "red" | "orange" | "yellow";
+const color: Color = "orange";
